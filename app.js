@@ -12,8 +12,8 @@ const helmet = require("helmet");
 
 const app = express();
 const mongoose = require("mongoose");
-// const mongoDB = 'mongo "mongodb+srv://cluster0.1dmirib.mongodb.net/local_library" --username express102';
-const mongoDB = "mongodb+srv://express102:express102-db@cluster0.1dmirib.mongodb.net/local_library?retryWrites=true&w=majority"
+const dev_db_url = "mongodb+srv://express102:express102-db@cluster0.1dmirib.mongodb.net/local_library?retryWrites=true&w=majority"
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected...'))
